@@ -1,0 +1,13 @@
+services:
+  shiny:
+    build:
+      context: .
+    image: shiny-server
+    container_name: shiny-server
+    ports:
+      - "3838:3838"
+    volumes:
+      - /srv04a/docker/shiny_apps:/srv/shiny-server
+      - /srv04a/docker/shiny_R_libs:/usr/local/lib/R/site-library
+      - /srv04a/docker/shiny_logs:/var/log/shiny-server
+    restart: unless-stopped
